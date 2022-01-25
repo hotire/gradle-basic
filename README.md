@@ -2,6 +2,10 @@
 
 ## gradle-profiler
 
+~~~
+gradle-profiler --benchmark --scenario-file scenario
+~~~
+
 https://github.com/gradle/gradle-profiler
 
 ### references
