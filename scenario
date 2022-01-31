@@ -1,6 +1,6 @@
-clean_build_2gb_4workers {
+clean_build_parallel {
     tasks = ["build"]
-    gradle-args = ["--max-workers=4"]
+    gradle-args = ["--parallel"]
     jvm-args = ["-Xmx2048m"]
     cleanup-tasks = ["clean"]
 }
