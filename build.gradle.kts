@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id("org.springframework.boot") version "2.6.3"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
@@ -36,7 +34,7 @@ dependencyManagement {
     }
 }
 
-tasks.withType<KotlinCompile> {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
@@ -47,4 +45,8 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-ta
+fun getCheckedOutGitCommitHash() = grgit.head().abbreviatedId
+
+tasks.withType<Jar> {
+    archiveClassifier.set(getCheckedOutGitCommitHash())
+}
